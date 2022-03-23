@@ -1,28 +1,52 @@
 import GoogleMapReact from 'google-map-react'
-import './map.css'
+import styled from 'styled-components'
 
 import LocationPin from "./LocationPin";
 
-function Map({ location, zoomLevel }) {
-  return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <h2 className="map-h2">Find Music NYC</h2>
+const SC = {};
 
-      <div className="google-map">
+function Map({ events, zoomLevel }) {
+  console.log(events);
+  return (
+    <SC.MapContainer>
+      <SC.Header>Find Music NYC</SC.Header>
+
+      <SC.GoogleMapWrapper>
         <GoogleMapReact
           bootstrapURLKeys={{ key: 'AIzaSyDS00yL6zBm6K8RX7XTh9yYzpxFNp6eZZM' }}
-          defaultCenter={location}
+          defaultCenter={{
+            lat: 40.746753122504174,
+            lng: -73.98557128020252,
+          }}
           defaultZoom={zoomLevel}
         >
-          <LocationPin
-            lat={location.lat}
-            lng={location.lng}
-            text={location.address}
-          />
+          {events.map(event => (
+            <LocationPin
+              key={event.id}
+              lat={event.location.lat}
+              lng={event.location.lng}
+              text={event.displayName}
+            />
+          ))}
         </GoogleMapReact>
-      </div>
-    </div>
+      </SC.GoogleMapWrapper>
+    </SC.MapContainer>
   )
 }
+
+SC.MapContainer = styled.div`
+  height: 100vh;
+  width: 100%;
+`;
+
+SC.Header = styled.h2`
+  font-size: 1.3rem;
+  font-weight: 400;
+`;
+
+SC.GoogleMapWrapper = styled.div`
+  width: 100%;
+  height: 80vh;
+`;
 
 export default Map;
