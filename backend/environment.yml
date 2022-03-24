@@ -8,3 +8,4 @@ dependencies:
   - pip:
     - fastapi==0.75.0
     - uvicorn==0.17.6
+    - requests==2.26.0

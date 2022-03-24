@@ -18,7 +18,10 @@
                 "id":1,
                 "uri":"https://www.songkick.com/artists/83230-deftones",
                 "displayName":"Deftones",
-                "identifier": []
+                "identifier": [{
+                  "url": "https://musicbrainz.org/artist/7527f6c2-d762-4b88-b5e2-9244f1e34c46",
+                  "mbid": "7527f6c2-d762-4b88-b5e2-9244f1e34c46"
+                }]
               },
               "id":1,
               "displayName":"The Rooftop at Pier 17",

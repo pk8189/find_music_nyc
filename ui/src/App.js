@@ -7,12 +7,14 @@ const SC = {};
 
 function App() {
   const [events, setEvents] = useState([]);
+  const [genres, setGenres] = useState([]);
 
   useEffect(() => {
     fetch('/api')
       .then(res => res.json())
       .then(data => {
-        setEvents(data.resultsPage.results.event);
+        setEvents(data.events);
+        setGenres(data.genres);
       })
       .catch(error => {
         console.error("Error fetching data: ", error);
