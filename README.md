@@ -1,7 +1,10 @@
 # Find Music NYC
 
+## Setup
+- `source ./commands.rc`
+
 ## Start the frontend
-- install nodejs v12.18.3
+- install nodejs v12.18.3 or higher
 - `cd ui`
 - `npm install`
 - `npm start`

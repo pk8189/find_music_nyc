@@ -1,0 +1,36 @@
+refresh_local() {
+    BASE_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+    source $BASE_DIR/commands.rc
+}
+
+alias build_frontend="pushd $BASE_DIR/ui && npm install && popd"
+alias run_frontend="cd $BASE_DIR/ui && npm start"
+
+env_name='find_music_nyc'
+
+run_backend() {
+    conda activate $env_name
+    cd $BASE_DIR/backend/ 
+    uvicorn main:app --reload
+}
+
+build_backend() {
+    condaList=`echo $(conda info --envs) | sed "s/#//g"`
+    echo $condaList
+    pushd $BASE_DIR/backend
+    if [[ "$condaList" == *"$env_name"* ]]; 
+        then conda env update -f environment.yml
+        else conda env create -f environment.yml
+    fi
+    popd
+}
+
+#use: commit "[your-commit-message]"
+commit() {
+    local message={$1:"wip"}
+    pushd $BASE_DIR
+    git add .
+    git status
+    git commit -m $message
+    git push
+}
