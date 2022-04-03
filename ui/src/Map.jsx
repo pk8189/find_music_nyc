@@ -1,11 +1,12 @@
 import GoogleMapReact from 'google-map-react'
 import styled from 'styled-components'
+import { getGenreIcon } from './icons/genreMapper';
 
 import LocationPin from "./LocationPin";
 
 const SC = {};
 
-function Map({ events, zoomLevel }) {
+function Map({ events, zoomLevel, genres }) {
   console.log(events);
   return (
     <SC.MapContainer>
@@ -26,7 +27,9 @@ function Map({ events, zoomLevel }) {
               lat={event.location.lat}
               lng={event.location.lng}
               text={event.displayName}
-            />
+            >
+              {getGenreIcon(genres[event.id])}
+            </LocationPin>
           ))}
         </GoogleMapReact>
       </SC.GoogleMapWrapper>

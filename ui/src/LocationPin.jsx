@@ -1,14 +1,13 @@
-import { Icon } from '@iconify/react'
-import locationIcon from '@iconify/icons-mdi/map-marker'
 import styled from 'styled-components'
 
 const SC = {};
 
-function LocationPin({ text }) {
+function LocationPin({ text, children }) {
+  console.log(children)
   return(
     <SC.StyledLocationPin>
       <SC.PinIcon>
-        <Icon icon={locationIcon} />
+        {children}
       </SC.PinIcon>
       <SC.PinText >{text}</SC.PinText >
     </SC.StyledLocationPin>

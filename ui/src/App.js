@@ -24,7 +24,7 @@ function App() {
   return (
     <SC.App>
       <SC.Header>
-        <Map events={events} zoomLevel={12} />
+        <Map events={events} zoomLevel={12} genres={genres}/>
       </SC.Header>
     </SC.App>
   );
