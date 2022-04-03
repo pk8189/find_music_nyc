@@ -27,9 +27,7 @@ function Map({ events, zoomLevel, genres }) {
               lat={event.location.lat}
               lng={event.location.lng}
               text={event.displayName}
-            >
-              {getGenreIcon(genres[event.id])}
-            </LocationPin>
+              genre={genres[event.id]}/>
           ))}
         </GoogleMapReact>
       </SC.GoogleMapWrapper>

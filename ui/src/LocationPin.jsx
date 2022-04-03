@@ -1,13 +1,18 @@
 import styled from 'styled-components'
+import { getGenreIcon } from './icons/genreMapper'
+import { Icon } from '@iconify/react'
+import locationIcon from '@iconify/icons-mdi/map-marker'
+
 
 const SC = {};
 
-function LocationPin({ text, children }) {
-  console.log(children)
+function LocationPin({ text, genre }) {
+  console.log(genre)
   return(
     <SC.StyledLocationPin>
       <SC.PinIcon>
-        {children}
+        {getGenreIcon(genre)}
+        <Icon icon={locationIcon} />
       </SC.PinIcon>
       <SC.PinText >{text}</SC.PinText >
     </SC.StyledLocationPin>
